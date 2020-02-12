@@ -1,0 +1,20 @@
+{
+  "name": "contatooh",
+  "description": "Livro Mean",
+  "main": "server.js",
+  "authors": [
+    "Matheus Santos"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/matheusmendes1/Livro-MEAN",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3"
+  }
+}
