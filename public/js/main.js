@@ -1,5 +1,5 @@
 angular
-    .module('contatooh', ['ngRoute'])
+    .module('contatooh', ['ngRoute', 'ngResource'])
     .config(function($routeProvider) {
 
         $routeProvider.when('/contatos', {
@@ -8,6 +8,11 @@ angular
         });
 
         $routeProvider.when('/contato/:contatoId', {
+            templateUrl: 'partials/contato.html',
+            controller: 'ContatoController'
+        });
+
+        $routeProvider.when('/contato', {
             templateUrl: 'partials/contato.html',
             controller: 'ContatoController'
         });

@@ -1,10 +1,36 @@
 angular
     .module('contatooh')
-    .controller('ContatosController', function($scope) {
+    .controller('ContatosController', function($scope, Contato) {
 
-        $scope.total = 0;
+        $scope.filtro = '';
+        $scope.contatos = [];
+        $scope.mensagem = {texto: ''};
 
-        $scope.incrementa = () => {
-            $scope.total++;
+        buscaContatos = () => {
+
+            Contato.query(
+                (contatos) => {
+                    $scope.contatos = contatos;
+                    $scope.mensagem = {};
+                },
+                (erro) => {
+                    $scope.mensagem = { texto: 'Não foi possível obter a lista'};
+                    console.log(erro);
+                }
+            );
+        };
+        buscaContatos();
+
+        $scope.remove = (contato) => {
+            Contato.delete(
+                { id: contato._id },
+                buscaContatos,
+                (erro) => {
+                    $scope.mensagem = { texto: 'Não foi possível remover o contato'};
+                    console.log(erro);
+                })
         }
+
     });
+
+//$http retorna uma promise

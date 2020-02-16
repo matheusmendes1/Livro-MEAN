@@ -1,6 +1,13 @@
 module.exports = (app) => {
     const controller = app.controllers.contatoController;
 
-    app.get('/contatos', controller.contactsList);
-    app.get('/contatos/:id', controller.getContact);
+    app
+        .route('/contatos') 
+        .post(controller.saveContact)
+        .get(controller.contactsList);
+    
+    app
+        .route('/contatos/:id')
+        .get(controller.getContact)
+        .delete(controller.removeContact);
 }
