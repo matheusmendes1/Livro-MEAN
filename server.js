@@ -1,5 +1,6 @@
 const http = require('http');
 const app = require('./config/express')();
+require('./config/database.js')('mongodb://localhost/contatooh');
 
 http
     .createServer(app)
